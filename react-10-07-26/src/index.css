@@ -1,0 +1,107 @@
+/* ===== Общие сбросы ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  line-height: 1.7;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 720px;
+}
+
+/* ---- Карточка задания ---- */
+.card {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  padding: 24px 28px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #000000;
+}
+
+/* ---- Кнопка «Сохранить профиль» ---- */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.controls button {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 20px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.controls button:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* ---- Уведомление «Данные сохранены» ---- */
+.toast {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #2ecc71;
+  border: 1px solid #27ae60;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-top: 16px;
+  width: fit-content;
+  animation: toast-in 0.25s ease;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Пояснение под заданием ---- */
+.comment {
+  font-size: 13px;
+  color: #666666;
+  margin-top: 16px;
+}
+
