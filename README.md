@@ -4,17 +4,13 @@ A multi-project monorepo containing interactive React 19 web applications develo
 
 ---
 
-## 🌐 Live Demos (GitHub Pages)
+## 📂 Assignments Overview
 
-The projects are automatically deployed to GitHub Pages:
-
-| Assignment Date | Topics / Features | Live Demo |
-| :--- | :--- | :--- |
-| **2026-10-06** | Basket counter, state management & side effects with `useEffect` | [Open Demo](https://frontys.github.io/react-itstep/react-10-06-26/) |
-| **2026-10-07** | Auto-notification task scheduler and reactive triggers | [Open Demo](https://frontys.github.io/react-itstep/react-10-07-26/) |
-| **2026-10-10** | Order management system and reactive UI updates | [Open Demo](https://frontys.github.io/react-itstep/react-10-10-26/) |
-
-📖 **Main Showcase Portal:** [frontys.github.io/react-itstep](https://frontys.github.io/react-itstep/)
+| Assignment Date | Directory | Topics / Features | Stack |
+| :--- | :--- | :--- | :--- |
+| **2026-10-06** | [`react-10-06-26/`](./react-10-06-26/) | Basket counter, state management & side effects with `useEffect` | React 19, TypeScript, Vite |
+| **2026-10-07** | [`react-10-07-26/`](./react-10-07-26/) | Auto-notification task scheduler and reactive triggers | React 19, TypeScript, Vite |
+| **2026-10-10** | `react-10-10-26` | Order management system and reactive UI updates | React 19, TypeScript, Vite |
 
 ---
 
@@ -22,22 +18,20 @@ The projects are automatically deployed to GitHub Pages:
 
 - **Core:** React 19, TypeScript
 - **Bundler:** Vite
-- **Deployment:** GitHub Pages (served from `/docs`)
 
 ---
 
-## 🚀 Adding a New Assignment
+## 🚀 Running Assignments Locally
 
-```powershell
-# 1. Copy scaffold from previous date into new directory react-DD-MM-YY
-# 2. In vite.config.ts configure:
-#    base: '/react-itstep/react-DD-MM-YY/'
-#    build.outDir: '../docs/react-DD-MM-YY'
-# 3. Build:
-cd react-DD-MM-YY
+```bash
+# Navigate to any assignment directory:
+cd react-10-06-26
+
+# Install dependencies:
 npm install
-npm run build    # outputs build artifacts to ../docs/
-# 4. Add link to docs/index.html, commit and push to main
+
+# Start local dev server:
+npm run dev
 ```
 
 ---
