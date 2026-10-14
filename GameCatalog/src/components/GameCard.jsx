@@ -1,30 +1,37 @@
-export default function GameCard({ game }) {
+export default function GameCard({ game, onAddToCart, inCartCount = 0 }) {
   function handleImgError(e) {
     e.target.onerror = null;
     e.target.src = './images/fallback.svg';
   }
 
   return (
-    <div className="game-row">
+    <div className="card">
       <img
         src={game.image}
         alt={game.title}
         onError={handleImgError}
-        className="game-thumb"
+        className="card-thumb"
       />
-      <div className="game-details">
-        <h3>{game.title}</h3>
-        <div className="game-meta">
+      <div className="card-body">
+        <h3 title={game.title}>{game.title}</h3>
+        <div className="card-meta">
           <span>{game.publisher}</span>
           <span> · </span>
           <span>{game.genre}</span>
           <span> · </span>
           <span>Age: {game.minAge}+</span>
         </div>
-        <p className="game-desc">{game.description}</p>
+        <p className="card-desc">{game.description}</p>
       </div>
-      <div className="game-buy-box">
+      <div className="card-footer">
         <div className="price">{game.price} грн</div>
+        <button
+          type="button"
+          className="btn-buy"
+          onClick={() => onAddToCart(game)}
+        >
+          {inCartCount > 0 ? `In Cart (${inCartCount})` : 'Buy'}
+        </button>
       </div>
     </div>
   );

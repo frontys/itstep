@@ -2,7 +2,7 @@ import { useState } from 'react';
 import GameCard from './GameCard.jsx';
 import { getVisibleGames } from '../utils/catalog.js';
 
-export default function GameCatalog({ games }) {
+export default function GameCatalog({ games, cart = [], onAddToCart }) {
   const [search, setSearch] = useState('');
   const [genre, setGenre] = useState('all');
   const [sortMode, setSortMode] = useState('default');
@@ -18,6 +18,8 @@ export default function GameCatalog({ games }) {
     setSortMode('default');
     setPlayerAge('');
   }
+
+  const cartQuantities = new Map(cart.map(c => [c.id, c.quantity]));
 
   return (
     <div>
@@ -73,9 +75,14 @@ export default function GameCatalog({ games }) {
         <button type="button" className="btn-reset" onClick={handleReset}>Reset</button>
       </div>
 
-      <div className="games-list">
+      <div className="games-grid">
         {visibleGames.map(game => (
-          <GameCard key={game.id} game={game} />
+          <GameCard
+            key={game.id}
+            game={game}
+            onAddToCart={onAddToCart}
+            inCartCount={cartQuantities.get(game.id) || 0}
+          />
         ))}
       </div>
 
