@@ -23,13 +23,19 @@ body {
 .user-panel {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-size: 14px;
 }
 
+.user-panel button.nav-active {
+  background: #333;
+  color: #fff;
+  border-color: #333;
+}
+
 .main-content {
-  max-width: 820px;
-  margin: 24px auto;
+  max-width: 860px;
+  margin: 20px auto;
   padding: 0 16px;
 }
 
@@ -39,12 +45,48 @@ body {
   align-items: baseline;
   border-bottom: 2px solid #ddd;
   padding-bottom: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .catalog-header h2 {
   margin: 0;
   font-size: 20px;
+}
+
+.count-label {
+  font-size: 13px;
+  color: #555;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 12px;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.btn-reset {
+  margin-left: auto;
+  align-self: flex-end;
+  padding: 5px 12px;
 }
 
 .games-list {
@@ -64,7 +106,7 @@ body {
 
 .game-thumb {
   width: 140px;
-  height: 80px;
+  height: 90px;
   object-fit: cover;
   background: #ddd;
   flex-shrink: 0;
@@ -75,24 +117,38 @@ body {
 }
 
 .game-details h3 {
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
   font-size: 16px;
 }
 
-.game-tag {
+.game-meta {
   font-size: 12px;
   color: #666;
+  margin-bottom: 6px;
+}
+
+.game-desc {
+  margin: 0;
+  font-size: 13px;
+  color: #333;
 }
 
 .game-buy-box {
   text-align: right;
-  min-width: 120px;
+  min-width: 110px;
 }
 
 .game-buy-box .price {
   font-size: 16px;
   font-weight: bold;
-  margin-bottom: 6px;
+}
+
+.empty-box {
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #ccc;
+  padding: 30px;
+  margin-top: 10px;
 }
 
 .auth-container {
@@ -110,6 +166,21 @@ body {
   padding-bottom: 8px;
 }
 
+.add-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.add-container h2 {
+  margin-top: 0;
+  font-size: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
 .form-field {
   display: flex;
   flex-direction: column;
@@ -121,10 +192,22 @@ body {
   margin-bottom: 4px;
 }
 
-.form-field input {
+.form-field input,
+.form-field select,
+.form-field textarea {
   padding: 6px 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  font-family: inherit;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-row .form-field {
+  flex: 1;
 }
 
 button {
@@ -136,7 +219,7 @@ button {
 .btn-block {
   width: 100%;
   padding: 8px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .switch-box {
@@ -164,4 +247,10 @@ button {
   color: #080;
   font-size: 13px;
   margin-bottom: 8px;
+}
+
+.hint-text {
+  font-size: 12px;
+  color: #666;
+  margin: 4px 0;
 }

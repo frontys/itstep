@@ -4,61 +4,101 @@
     {
       "id": "item-1",
       "title": "Grand Theft Auto V",
+      "publisher": "Rockstar Games",
       "price": 899,
+      "genre": "Action",
+      "minAge": 18,
+      "description": "An open world action adventure set in the fictional state of San Andreas.",
       "image": "./images/item-1.svg"
     },
     {
       "id": "item-2",
       "title": "Cyberpunk 2077",
+      "publisher": "CD Projekt Red",
       "price": 1199,
+      "genre": "RPG",
+      "minAge": 18,
+      "description": "An open world action adventure story set in the megalopolis Night City.",
       "image": "./images/item-2.svg"
     },
     {
       "id": "item-3",
       "title": "Baldur's Gate 3",
+      "publisher": "Larian Studios",
       "price": 1499,
+      "genre": "RPG",
+      "minAge": 18,
+      "description": "A story-rich party-based roleplaying game set in the Dungeons and Dragons universe.",
       "image": "./images/item-3.svg"
     },
     {
       "id": "item-4",
       "title": "Elden Ring",
+      "publisher": "FromSoftware",
       "price": 1799,
+      "genre": "Souls-like",
+      "minAge": 16,
+      "description": "An action roleplaying game featuring vast fantastical landscapes and complex dungeons.",
       "image": "./images/item-4.svg"
     },
     {
       "id": "item-5",
       "title": "Red Dead Redemption 2",
+      "publisher": "Rockstar Games",
       "price": 999,
+      "genre": "Adventure",
+      "minAge": 18,
+      "description": "An epic tale of life in America at the dawn of the modern age.",
       "image": "./images/item-5.svg"
     },
     {
       "id": "item-6",
       "title": "The Witcher 3: Wild Hunt",
+      "publisher": "CD Projekt Red",
       "price": 599,
+      "genre": "RPG",
+      "minAge": 18,
+      "description": "A monster slayer for hire takes on a contract tracking a child of prophecy.",
       "image": "./images/item-6.svg"
     },
     {
       "id": "item-7",
       "title": "Minecraft",
+      "publisher": "Mojang Studios",
       "price": 790,
+      "genre": "Sandbox",
+      "minAge": 7,
+      "description": "Explore infinite worlds and build everything from simplest homes to grandest castles.",
       "image": "./images/item-7.svg"
     },
     {
       "id": "item-8",
       "title": "Black Myth: Wukong",
+      "publisher": "Game Science",
       "price": 1699,
+      "genre": "Action",
+      "minAge": 16,
+      "description": "An action RPG rooted in Chinese mythology based on Journey to the West.",
       "image": "./images/item-8.svg"
     },
     {
       "id": "item-9",
       "title": "Counter-Strike 2",
+      "publisher": "Valve",
       "price": 595,
+      "genre": "Shooter",
+      "minAge": 16,
+      "description": "The premier tactical first-person team-based shooter game in esports history.",
       "image": "./images/item-9.svg"
     },
     {
       "id": "item-10",
       "title": "Hogwarts Legacy",
+      "publisher": "Avalanche Software",
       "price": 1299,
+      "genre": "RPG",
+      "minAge": 12,
+      "description": "An immersive open-world action RPG set in the world introduced in Harry Potter.",
       "image": "./images/item-10.svg"
     }
   ]
