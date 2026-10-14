@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="360" viewBox="0 0 280 360">
+  <rect width="280" height="360" rx="10" fill="#e9ecef"/>
+  <rect x="12" y="12" width="256" height="336" rx="6" fill="none" stroke="#ced4da" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="140" cy="150" r="32" fill="#adb5bd" opacity="0.5"/>
+  <text x="140" y="220" text-anchor="middle" fill="#6c757d" font-size="16" font-family="system-ui, sans-serif" font-weight="bold">No Image</text>
+  <text x="140" y="244" text-anchor="middle" fill="#adb5bd" font-size="12" font-family="system-ui, sans-serif">Fallback Preview</text>
+</svg>

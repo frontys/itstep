@@ -11,6 +11,7 @@ A multi-project monorepo containing interactive React 19 web applications develo
 | **2026-10-06** | [`react-10-06-26/`](./react-10-06-26/) | Basket counter, state management & side effects with `useEffect` | React 19, TypeScript, Vite |
 | **2026-10-07** | [`react-10-07-26/`](./react-10-07-26/) | Auto-notification task scheduler and reactive triggers | React 19, TypeScript, Vite |
 | **2026-10-10** | `react-10-10-26` | Order management system and reactive UI updates | React 19, TypeScript, Vite |
+| **2026-10-14** | [`GameCatalog/`](./GameCatalog/) | Games catalog with authentication & local persistence | React 19, JavaScript, Vite |
 
 ---
 
