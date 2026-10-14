@@ -24,32 +24,32 @@ export default function RegisterForm({ onRegister, onSwitchToLogin }) {
   }
 
   return (
-    <div className="auth-box">
-      <h3>Register</h3>
-      {error && <p className="error">{error}</p>}
+    <div className="auth-container">
+      <h2>Create Account</h2>
+      {error && <div className="error-text">{error}</div>}
       <form onSubmit={handleSubmit}>
-        <label>
-          Name:
+        <div className="form-field">
+          <label>Username</label>
           <input name="name" value={form.name} onChange={handleChange} required />
-        </label>
-        <label>
-          Email:
+        </div>
+        <div className="form-field">
+          <label>Email</label>
           <input name="email" type="email" value={form.email} onChange={handleChange} required />
-        </label>
-        <label>
-          Password:
+        </div>
+        <div className="form-field">
+          <label>Password</label>
           <input name="password" type="password" value={form.password} onChange={handleChange} required />
-        </label>
-        <label>
-          Repeat Password:
+        </div>
+        <div className="form-field">
+          <label>Confirm Password</label>
           <input name="repeatPassword" type="password" value={form.repeatPassword} onChange={handleChange} required />
-        </label>
-        <button type="submit">Sign Up</button>
+        </div>
+        <button type="submit" className="btn-block">Register</button>
       </form>
-      <p style={{ marginTop: '10px', fontSize: '13px' }}>
-        Already have account?{' '}
-        <button type="button" onClick={onSwitchToLogin}>Login</button>
-      </p>
+      <div className="switch-box">
+        Already registered?{' '}
+        <button type="button" onClick={onSwitchToLogin}>Sign in</button>
+      </div>
     </div>
   );
 }

@@ -12,35 +12,35 @@ export default function LoginForm({ onLogin, notice, onSwitchToRegister }) {
   }
 
   return (
-    <div className="auth-box">
-      <h3>Login</h3>
-      {notice && <p className="msg">{notice}</p>}
-      {error && <p className="error">{error}</p>}
+    <div className="auth-container">
+      <h2>Account Login</h2>
+      {notice && <div className="msg-text">{notice}</div>}
+      {error && <div className="error-text">{error}</div>}
       <form onSubmit={handleSubmit}>
-        <label>
-          Email:
+        <div className="form-field">
+          <label>Email Address</label>
           <input
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password:
+        </div>
+        <div className="form-field">
+          <label>Password</label>
           <input
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Sign In</button>
+        </div>
+        <button type="submit" className="btn-block">Sign In</button>
       </form>
-      <p style={{ marginTop: '10px', fontSize: '13px' }}>
-        No account?{' '}
+      <div className="switch-box">
+        Don't have an account?{' '}
         <button type="button" onClick={onSwitchToRegister}>Register</button>
-      </p>
+      </div>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import GameCatalog from './components/GameCatalog.jsx';
 export default function App() {
   const [database, setDatabase] = useState(() => loadDatabase(initialDatabase));
   const [currentUser, setCurrentUser] = useState(null);
-  const [authTab, setAuthTab] = useState('register');
+  const [authView, setAuthView] = useState('register');
   const [notice, setNotice] = useState('');
 
   function saveAndSet(nextDb) {
@@ -36,8 +36,8 @@ export default function App() {
       users: [...database.users, newUser],
     });
 
-    setNotice('Registered! Please login.');
-    setAuthTab('login');
+    setNotice('Registered successfully. Please login.');
+    setAuthView('login');
     return '';
   }
 
@@ -55,38 +55,42 @@ export default function App() {
 
   function handleLogout() {
     setCurrentUser(null);
-    setAuthTab('login');
+    setAuthView('login');
     setNotice('');
   }
 
   return (
     <div>
-      <div className="header">
-        <h1>Game Catalog</h1>
+      <header className="topbar">
+        <div className="brand">🎮 GameStore</div>
         {currentUser && (
-          <nav>
-            <span>User: {currentUser.name}</span>
-            <button type="button" onClick={handleLogout}>Logout</button>
-          </nav>
-        )}
-      </div>
-
-      <main>
-        {!currentUser ? (
-          <div>
-            {authTab === 'register' ? (
-              <RegisterForm
-                onRegister={handleRegister}
-                onSwitchToLogin={() => setAuthTab('login')}
-              />
-            ) : (
-              <LoginForm
-                onLogin={handleLogin}
-                notice={notice}
-                onSwitchToRegister={() => setAuthTab('register')}
-              />
-            )}
+          <div className="user-panel">
+            <span>👤 {currentUser.name}</span>
+            <button type="button" onClick={handleLogout}>Log out</button>
           </div>
+        )}
+      </header>
+
+      <main className="main-content">
+        {!currentUser ? (
+          authView === 'register' ? (
+            <RegisterForm
+              onRegister={handleRegister}
+              onSwitchToLogin={() => {
+                setAuthView('login');
+                setNotice('');
+              }}
+            />
+          ) : (
+            <LoginForm
+              onLogin={handleLogin}
+              notice={notice}
+              onSwitchToRegister={() => {
+                setAuthView('register');
+                setNotice('');
+              }}
+            />
+          )
         ) : (
           <GameCatalog games={database.games} />
         )}

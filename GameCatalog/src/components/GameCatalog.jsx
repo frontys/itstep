@@ -6,8 +6,10 @@ export default function GameCatalog({ games }) {
 
   return (
     <div>
-      <h2>Games Catalog</h2>
-      <p>Games count: {visibleGames.length}</p>
+      <div className="catalog-header">
+        <h2>Games List</h2>
+        <span>Total: {visibleGames.length} items</span>
+      </div>
 
       <div className="games-list">
         {visibleGames.map(game => (
