@@ -62,10 +62,10 @@ export default function App() {
   return (
     <div>
       <header className="topbar">
-        <div className="brand">🎮 GameStore</div>
+        <div className="brand">GameStore</div>
         {currentUser && (
           <div className="user-panel">
-            <span>👤 {currentUser.name}</span>
+            <span>User: {currentUser.name}</span>
             <button type="button" onClick={handleLogout}>Log out</button>
           </div>
         )}
