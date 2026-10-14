@@ -14,11 +14,17 @@ export default function GameCard({ game }) {
       />
       <div className="game-details">
         <h3>{game.title}</h3>
-        <span className="game-tag">PC Digital Edition</span>
+        <div className="game-meta">
+          <span>{game.publisher}</span>
+          <span> · </span>
+          <span>{game.genre}</span>
+          <span> · </span>
+          <span>Age: {game.minAge}+</span>
+        </div>
+        <p className="game-desc">{game.description}</p>
       </div>
       <div className="game-buy-box">
         <div className="price">{game.price} грн</div>
-        <button type="button">Details</button>
       </div>
     </div>
   );
