@@ -1,0 +1,65 @@
+{
+  "users": [],
+  "games": [
+    {
+      "id": "item-1",
+      "title": "Grand Theft Auto V",
+      "price": 899,
+      "image": "./images/item-1.svg"
+    },
+    {
+      "id": "item-2",
+      "title": "Cyberpunk 2077",
+      "price": 1199,
+      "image": "./images/item-2.svg"
+    },
+    {
+      "id": "item-3",
+      "title": "Baldur's Gate 3",
+      "price": 1499,
+      "image": "./images/item-3.svg"
+    },
+    {
+      "id": "item-4",
+      "title": "Elden Ring",
+      "price": 1799,
+      "image": "./images/item-4.svg"
+    },
+    {
+      "id": "item-5",
+      "title": "Red Dead Redemption 2",
+      "price": 999,
+      "image": "./images/item-5.svg"
+    },
+    {
+      "id": "item-6",
+      "title": "The Witcher 3: Wild Hunt",
+      "price": 599,
+      "image": "./images/item-6.svg"
+    },
+    {
+      "id": "item-7",
+      "title": "Minecraft",
+      "price": 790,
+      "image": "./images/item-7.svg"
+    },
+    {
+      "id": "item-8",
+      "title": "Black Myth: Wukong",
+      "price": 1699,
+      "image": "./images/item-8.svg"
+    },
+    {
+      "id": "item-9",
+      "title": "Counter-Strike 2",
+      "price": 595,
+      "image": "./images/item-9.svg"
+    },
+    {
+      "id": "item-10",
+      "title": "Hogwarts Legacy",
+      "price": 1299,
+      "image": "./images/item-10.svg"
+    }
+  ]
+}
