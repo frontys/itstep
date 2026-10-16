@@ -11,6 +11,7 @@ itstep/
 ├── csharp-net/          # System & Network Programming (.NET 9)
 ├── javascript/          # Modern JavaScript, DOM/BOM & Browser APIs
 ├── react/               # React 19 + TypeScript + Vite Applications
+├── html-css/            # Responsive HTML5 & CSS3 Layout Projects
 ├── course-work/         # Term Coursework Project (Python GUI)
 ├── archive-homework/    # Foundational Coursework (C++, Python, HTML/CSS)
 └── materials/           # Assignment briefs, specifications, and catalogs
@@ -81,7 +82,20 @@ Modern React applications developed with TypeScript, React 19, and Vite.
 
 ---
 
-### 4. Coursework & Archives (`course-work/` & `archive-homework/`)
+### 4. HTML5 & CSS3 Web Layouts (`html-css/`)
+Collection of 5 responsive, cross-browser web layout projects.
+
+| Directory | Project & Focus | Stack |
+| :--- | :--- | :--- |
+| `bookstore` | Multi-page bookstore showcase with book previews and hero grid | HTML5, CSS3 |
+| `fitness-club` | Fitness center landing with pricing plans, trainer cards, and schedule | HTML5, CSS3, Flexbox |
+| `medical-clinic` | Healthcare clinic portal with doctor appointments and service directory | HTML5, CSS3, Grid |
+| `ecommerce-shop` | Multi-category eCommerce storefront with product filters | HTML5, CSS3, Flexbox |
+| `crm-requests` | Service request and client application CRM dashboard | HTML5, CSS3, JS |
+
+---
+
+### 5. Coursework & Archives (`course-work/` & `archive-homework/`)
 - **`course-work/`**: Final coursework project featuring Python application logic and GUI automation.
 - **`archive-homework/`**: Historical coursework archive covering C++ object-oriented fundamentals, Python algorithms, and introductory HTML/CSS layouts.
 

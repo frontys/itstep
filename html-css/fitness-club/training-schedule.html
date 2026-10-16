@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Розклад тренувань</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="training-schedule">
+        <h1>Розклад тренувань</h1>
+        <div id="training-calendar">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Час</th>
+                        <th>Назва тренування</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Скоро</td>
+                        <td>Скоро</td>
+                        <td>Скоро</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Додайте власні тренування:</p>
+        <div class="input-group">
+            <label>Назва тренування:</label>
+            <input type="text" id="training-name" placeholder="Введіть назву">
+        </div>
+        <div class="input-group">
+            <label>Дата:</label>
+            <input type="date" id="training-date">
+        </div>
+        <div class="input-group">
+            <label>Час:</label>
+            <input type="time" id="training-time">
+        </div>
+        <button class="button" id="add-training">Додати</button>
+        <p class="info-link">* Можливість додавати власні тренування буде доступна у майбутньому оновленні.</p>
+        <p class="info-link">* Нагадування про майбутні заняття через email або push-сповіщення буде доступне у майбутньому оновленні.</p>
+        <a href="account.html" class="button">Повернутися</a>
+    </div>
+</body>
+</html>

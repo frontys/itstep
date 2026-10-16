@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Особистий кабінет</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Особистий кабінет</h1>
+        <div class="user-info">
+            <p><strong>Email:</strong> <span id="user-email">user@example.com</span></p>
+            <p><strong>Вік:</strong> <span id="user-age">25</span></p>
+            <p><strong>Стать:</strong> <span id="user-gender">Чоловік</span></p>
+            <p><strong>Вага:</strong> <span id="user-weight">70 кг</span></p>
+            <p><strong>Ріст:</strong> <span id="user-height">175 см</span></p>
+            <p><strong>Ціль:</strong> <span id="user-goal">Схуднення</span></p>
+        </div>
+
+        <h2>Статистика прогресу</h2>
+        <div class="progress">
+            <p>Вага: 70 кг → 68 кг</p>
+            <p>Об'єми: Груди: 90 см → 88 см, Талія: 80 см → 78 см</p>
+        </div>
+
+        <h2>Налаштування нагадувань</h2>
+        <div class="input-group">
+            <label>Нагадування:</label>
+            <select>
+                <option>Тренування</option>
+                <option>Харчування</option>
+            </select>
+        </div>
+        <a href="#" class="button">Зберегти</a>
+        <p class="info-link">* Нагадування через email або push-сповіщення буде доступне у майбутньому оновленні.</p>
+
+        <h2>Каталог тренувань</h2>
+        <a href="training-catalog.html" class="button">Перейти до каталогу тренувань</a>
+
+        <h2>Розклад тренувань</h2>
+        <div id="training-calendar"></div>
+        <a href="training-schedule.html" class="button">Перейти до розкладу тренувань</a>
+
+        <h2>Чат із тренером</h2>
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Напишіть повідомлення...">
+                <button id="send-message">Надіслати</button>
+            </div>
+            <p class="info-link">* Можливість надсилання відео та фото буде доступна у майбутньому оновленні.</p>
+        </div>
+    </div>
+</body>
+</html>

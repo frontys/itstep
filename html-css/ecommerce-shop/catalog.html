@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Catalog</title>
+</head>
+<body>
+    <header>
+        <div class="logo">EvaPC</div>
+        <nav>
+            <ul>
+                <li><a href="main.html">Головна</a></li>
+                <li><a href="catalog.html">Каталог</a></li>
+                <li><a href="#">Про нас</a></li>
+                <li><a href="#">Контакти</a></li>
+                <li><a href="basket.html">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="catalog">
+            <h1>Каталог товарів</h1>
+
+            <div class="searchbar">
+                <input type="text" placeholder="Пошук товарів...">
+                <button>🔍</button>
+            </div>
+
+            <div class="catalog-container">
+                <div class="catalog-filter">
+                    <h3>Фільтри</h3>
+                    <label>
+                        <input type="checkbox" name="category" value="computers">
+                        Комп'ютери
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="motherboards">
+                        Материнські плати
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="videocards">
+                        Відеокарти
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="cooling">
+                        СРО
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="psu">
+                        Блок живлення
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="storage">
+                        Накопичувачі
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="keyboards">
+                        Клавіатури
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="mice">
+                        Мишки
+                    </label>
+                    <label>
+                        <input type="checkbox" name="category" value="accessories">
+                        Аксесуари
+                    </label>
+                </div>
+                <div class="catalog-product-list">
+                    <div class="product-card">
+                        <img src="images/rogvideo.png" alt="Product Image" width="300" height="300">
+                        <a class="name" href="#">Evangelion x ASUS ROG PC</a>
+                        <p class="price">295 000₴</p>
+                        <div class="buttons">
+                            <button>В корзину</button>
+                            <button>Купить</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/PCEvaRedCard.jpg" alt="Product Image" width="300" height="300">
+                        <a class="name" href="product.html">Evangelion x ASUS ROG PC</a>
+                        <p class="price">295 000₴</p>
+                        <div class="buttons">
+                            <button onclick="window.location.href='basket.html'">В корзину</button>
+                            <button onclick="window.location.href='basket.html'">Купить</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/ROGBP.jpeg" alt="Product Image" width="300" height="300">
+                        <a class="name" href="#">Evangelion x ASUS ROG PC</a>
+                        <p class="price">295 000₴</p>
+                        <div class="buttons">
+                            <button>В корзину</button>
+                            <button>Купить</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/ROGVODA.jpg" alt="Product Image" width="300" height="300">
+                        <a class="name" href="#">Evangelion x ASUS ROG PC</a>
+                        <p class="price">295 000₴</p>
+                        <div class="buttons">
+                            <button>В корзину</button>
+                            <button>Купить</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/ROGNAKOPITEL.png" alt="Product Image" width="300" height="300">
+                        <a class="name" href="#">Evangelion x ASUS ROG PC</a>
+                        <p class="price">295 000₴</p>
+                        <div class="buttons">
+                            <button>В корзину</button>
+                            <button>Купить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 EvaPC. <a href="privacy.html">Усі права захищені</a></p>
+    </footer>
+</body>
+</html>

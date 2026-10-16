@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+        <!--Загальний контейнер --> 
+        <div class="login-container">
+            <h2>Авторизация</h2>
+            <!--Форма Авторизации-->
+            <form method="POST">
+                <div class="input-group">
+                    <label for="email">Електронна почта</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+    
+                <div class="input-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button onclick="location.href='main.html'" class="login-button">Увійти</button>
+            </form>
+    
+            <!--Посилання на відновлення паролю-->
+            <a href="forgot.html" class="forgot-password">Забули пароль?</a>
+        </div>
+</main>
+</body>
+</html>

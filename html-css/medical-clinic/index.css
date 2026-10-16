@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, #f4f4f4, #e8e8e8);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: linear-gradient(to right, #005f73, #0a9396);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+header h1 {
+    margin-bottom: 10px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+nav ul li {
+    margin: 0 15px;
+}
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover {
+    color: #e07a5f;
+    text-decoration: underline;
+}
+main {
+    padding: 20px;
+}
+section {
+    padding: 40px 20px;
+    background-color: #fff;
+    margin: 20px auto;
+    max-width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+#contacts {
+    background-color: #f4f4f4;
+    border: none;
+}
+#contacts p {
+    margin: 10px 0;
+}
+#contacts ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    text-align: left;
+}
+#contacts ul li {
+    margin: 5px 0;
+}
+#contacts ul li a {
+    color: #005f73;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+#contacts ul li a:hover {
+    color: #e07a5f;
+    text-decoration: underline;
+}
+#map {
+    margin-top: 20px;
+}
+#map iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+}
+#quick-access h2 {
+    margin-bottom: 20px;
+}
+#quick-access button {
+    background: linear-gradient(to right, #e07a5f, #d96b50);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+#quick-access button:hover {
+    background: linear-gradient(to right, #d96b50, #c85a44);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9em;
+}
+@media (min-width: 768px) {
+    nav ul {
+        justify-content: center;
+    }
+    section {
+        max-width: 900px;
+    }
+}

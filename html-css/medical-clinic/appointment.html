@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запис на прийом</title>
+    <link rel="stylesheet" href="appointment.css">
+</head>
+<body>
+    <header>
+        <h1>Запис на прийом</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="doctors.html">Лікарі</a></li>
+                <li><a href="about.html">Про клініку</a></li>
+                <li><a href="login.html">Увійти/Зареєструватися</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="appointment-form">
+            <h2>Заповніть форму для запису</h2>
+            <form>
+                <div class="form-group">
+                    <label for="department">Відділення</label>
+                    <select id="department" name="department" required>
+                        <option value="">Оберіть відділення</option>
+                        <option value="1">Терапевтичне</option>
+                        <option value="2">Хірургічне</option>
+                        <option value="3">Ортопедичне</option>
+                        <option value="4">Офтальмологічне</option>
+                        <option value="5">ЛОР</option>
+                        <option value="6">Дерматологічне</option>
+                        <option value="7">Педіатричне</option>
+                        <option value="8">Гінекологічне</option>
+                        <option value="9">Урологічне</option>
+                        <option value="10">Неврологічне</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="doctor">Лікар</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="">Оберіть лікаря</option>
+                        <option value="1">Іванов І.І.</option>
+                        <option value="2">Петров П.П.</option>
+                        <option value="3">Сидоров С.С.</option>
+                        <option value="4">Кузьмін К.К.</option>
+                        <option value="5">Михайлов М.М.</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Бажана дата</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Бажаний час</label>
+                    <select id="time" name="time" required>
+                        <option value="">Оберіть час</option>
+                        <option value="9:00">9:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Повне ім'я</label>
+                    <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Номер телефону</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+380..." required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Електронна адреса</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Причина візиту</label>
+                    <textarea id="reason" name="reason" placeholder="Опишіть причину візиту" rows="4"></textarea>
+                </div>
+                <button type="submit">Записатися</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Клініка MedicTF2. Всі права захищені.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,554 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+  --eva-purple: #6f2288;
+  --eva-green: #00ff00;
+  --eva-orange: #ff6b00;
+  --eva-dark: #1a1a1a;
+  --eva-light: #ffffff;
+  --eva-gradient: linear-gradient(135deg, var(--eva-purple), #441452);
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  color: var(--eva-light);
+}
+
+header {
+  background: var(--eva-gradient);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 3px solid var(--eva-green);
+  box-shadow: 0 2px 15px rgba(0, 255, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.logo img {
+  height: 150px;
+  margin-right: 15px;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--eva-green);
+  clip-path: polygon(0 15%, 15% 0, 85% 0, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0 85%);
+  pointer-events: none;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: var(--eva-green);
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--eva-green);
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+nav ul li a:hover {
+  color: var(--eva-orange);
+}
+
+main {
+  padding: 20px;
+}
+
+.popular-books, .catalog {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.book, .book-details {
+  background: var(--eva-gradient);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 250px;
+  border: 1px solid var(--eva-purple);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.book::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 0, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.book:hover::before {
+  left: 100%;
+}
+
+.book:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+  border-color: var(--eva-green);
+}
+
+.book img, .book-details img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.book a, .book button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.book a:hover, .book button:hover {
+  background: #555;
+}
+
+.book-details {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.book-details button {
+  width: 100%;
+  padding: 10px;
+  background: #333;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+.book button, .book-details button, .contact-form button {
+  background: transparent;
+  border: 2px solid var(--eva-green);
+  color: var(--eva-green);
+  padding: 10px 20px;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.book button::before, .contact-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--eva-green);
+  transition: 0.3s;
+  z-index: -1;
+}
+
+.book button:hover::before, .contact-form button:hover::before {
+  left: 0;
+}
+
+.book button:hover, .contact-form button:hover {
+  color: var(--eva-dark);
+}
+
+.contact {
+  padding: 20px;
+}
+
+.contact-form {
+  background: var(--eva-purple);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid var(--eva-green);
+  border-radius: 5px;
+  color: white;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 2px solid var(--eva-green);
+  border-radius: 3px;
+  background: var(--eva-dark);
+  color: white;
+}
+
+.contact-form button {
+  padding: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #555;
+}
+
+.cart-page {
+  max-width: 800px;
+  margin: 20px auto;
+  background: var(--eva-dark);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: white;
+  border: 2px solid var(--eva-green);
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 20px;
+    background: var(--eva-gradient);
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--eva-green);
+}
+
+.cart-item img {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+quantity-controls input {
+    width: 50px;
+    text-align: center;
+    background: var(--eva-dark);
+    color: var(--eva-light);
+    border: 2px solid var(--eva-green);
+    padding: 5px;
+}
+
+.quantity-btn {
+    padding: 5px 10px;
+    background: transparent;
+    border: 2px solid var(--eva-green);
+    color: var(--eva-green);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quantity-btn:hover {
+    background: var(--eva-green);
+    color: var(--eva-dark);
+}
+
+.remove-btn {
+    background: transparent;
+    border: 2px solid var(--eva-orange);
+    color: var(--eva-orange);
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.remove-btn:hover {
+    background: var(--eva-orange);
+    color: var(--eva-dark);
+}
+
+.cart-summary {
+    background: var(--eva-gradient);
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--eva-green);
+    text-align: right;
+}
+
+.total-price {
+    font-size: 1.5em;
+    color: var(--eva-green);
+    margin: 10px 0;
+}
+
+.checkout-btn {
+    background: var(--eva-green);
+    color: var(--eva-dark);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.checkout-btn:hover {
+    background: var(--eva-orange);
+    transform: scale(1.05);
+}
+
+.about-page {
+  max-width: 800px;
+  margin: 20px auto;
+  background: var(--eva-dark);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  color: white;
+  border: 2px solid var(--eva-green);
+}
+
+.about-page h3 {
+    color: var(--eva-green);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.about-page ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.about-page ul li {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.popular-books .book-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.footer-content {
+  background: var(--eva-purple);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-top: 3px solid var(--eva-green);
+}
+.footer-content p {
+  margin: 5px 0;
+}
+.social-icons {
+  margin-top: 10px;
+}
+.social-icons a {
+  margin: 0 5px;
+  display: inline-block;
+}
+.social-icons img {
+  width: 20px;
+  height: 20px;
+}
+
+.related-books {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--eva-purple);
+  border: 2px solid var(--eva-green);
+  border-radius: 5px;
+}
+
+.related-books h3 {
+  color: var(--eva-green);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.related-books .book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.related-books .book {
+  width: 200px;
+  background: var(--eva-dark);
+}
+
+.contact-info {
+  margin-top: 40px;
+  padding: 20px;
+  background: var(--eva-purple);
+  border: 2px solid var(--eva-green);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.book-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.book-info ul li {
+  margin: 10px 0;
+  color: var(--eva-green);
+}
+
+.excerpt {
+  font-style: italic;
+  margin: 20px 0;
+  padding: 15px;
+  border-left: 3px solid var(--eva-green);
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav ul {
+    padding: 0;
+  }
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+  .popular-books, .catalog {
+    flex-direction: column;
+    align-items: center;
+  }
+  .banner::before {
+    font-size: 80px;
+  }
+}
+
+.banner {
+  background: var(--eva-gradient);
+  padding: 60px 20px;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: var(--eva-green);
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.banner::before {
+  content: "NERV";
+  position: absolute;
+  font-size: 150px;
+  opacity: 0.1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--eva-green);
+  pointer-events: none;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.popular-books h2, .catalog h2 {
+  text-align: center;
+  color: var(--eva-green);
+  font-size: 2em;
+  margin: 40px 0;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
+  50% { text-shadow: 0 0 20px rgba(0, 255, 0, 0.4); }
+  100% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.2); }
+}
+
+h1, h2, h3 {
+  animation: glow 2s ease-in-out infinite;
+}
