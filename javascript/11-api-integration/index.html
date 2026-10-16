@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Integration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>REST API Integration Engine</h1>
+            <p class="subtitle">Asynchronous fetch, query parameters, state caching and offline fallback</p>
+        </header>
+        <div class="card">
+            <h2>Fetch Remote Data</h2>
+            <div style="display:flex; gap:10px; margin-bottom:12px;">
+                <input type="text" id="apiFilter" placeholder="Filter by title..." style="margin-bottom:0;">
+                <button id="fetchApiBtn" style="white-space:nowrap;">Fetch Posts</button>
+            </div>
+            <div id="apiStatus" style="font-size:13px; color:#e63956; margin-bottom:8px;"></div>
+            <div id="apiResults" class="output">Click 'Fetch Posts' to initialize request.</div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

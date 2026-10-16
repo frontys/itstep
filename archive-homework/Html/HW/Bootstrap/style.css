@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+.navbar {
+    background-color: #0d6efd !important;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+.profile-header {
+    text-align: center;
+    padding: 20px 0;
+    background: white;
+    margin-bottom: 20px;
+}
+.profile-header h2 {
+    margin: 0;
+}
+.card-news, .card-reward {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.icon {
+    font-size: 40px;
+    margin-right: 15px;
+}
+.news, .rewards {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}

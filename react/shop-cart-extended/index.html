@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Shop Project 2</title>
+    <link rel="stylesheet" href="style.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+const catalogData = [
+    { id: 1, title: "Tactical Keyboard MX", price: 139.99, tag: "Peripherals" },
+    { id: 2, title: "Pro Gaming Mouse 8K", price: 89.99, tag: "Peripherals" },
+    { id: 3, title: "Studio Monitor Speakers", price: 219.00, tag: "Audio" },
+    { id: 4, title: "Thunderbolt 4 Dock", price: 199.50, tag: "Accessories" }
+];
+
+function App() {
+    const [items] = React.useState(catalogData);
+    const [cart, setCart] = React.useState(() => {
+        try {
+            return JSON.parse(localStorage.getItem('crimson_shop_cart') || '[]');
+        } catch {
+            return [];
+        }
+    });
+    const [coupon, setCoupon] = React.useState('');
+    const [discount, setDiscount] = React.useState(0);
+
+    React.useEffect(() => {
+        localStorage.setItem('crimson_shop_cart', JSON.stringify(cart));
+    }, [cart]);
+
+    const addToCart = (product) => {
+        setCart(prev => {
+            const exists = prev.find(p => p.id === product.id);
+            if (exists) {
+                return prev.map(p => p.id === product.id ? { ...p, qty: p.qty + 1 } : p);
+            }
+            return [...prev, { ...product, qty: 1 }];
+        });
+    };
+
+    const updateQty = (id, delta) => {
+        setCart(prev => prev.map(p => {
+            if (p.id === id) {
+                const newQty = p.qty + delta;
+                return newQty > 0 ? { ...p, qty: newQty } : null;
+            }
+            return p;
+        }).filter(Boolean));
+    };
+
+    const applyCoupon = () => {
+        if (coupon.trim().toUpperCase() === 'PROMO15') {
+            setDiscount(15);
+        } else {
+            alert('Invalid coupon code. Try PROMO15');
+        }
+    };
+
+    const subtotal = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+    const discountAmount = (subtotal * discount) / 100;
+    const finalTotal = subtotal - discountAmount;
+
+    return (
+        <div className="container">
+            <header>
+                <div>
+                    <h1>Extended Shop with Coupon & Persistent Cart</h1>
+                    <p className="subtitle">LocalStorage sync, discount mechanics and instant cart checkout</p>
+                </div>
+            </header>
+            <div className="grid">
+                <div>
+                    <h2 style={{ color: '#e63956', marginBottom: '14px' }}>Product Catalog</h2>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        {items.map(p => (
+                            <div key={p.id} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 0 }}>
+                                <div>
+                                    <span className="badge">{p.tag}</span>
+                                    <h3 style={{ marginTop: '6px' }}>{p.title}</h3>
+                                    <p style={{ color: '#e63956', fontWeight: 700, marginTop: '4px' }}>${p.price.toFixed(2)}</p>
+                                </div>
+                                <button onClick={() => addToCart(p)}>Add to Cart</button>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="card">
+                    <h2 style={{ color: '#e63956' }}>Shopping Cart</h2>
+                    {cart.length === 0 ? (
+                        <p style={{ color: '#9ca3af', margin: '20px 0' }}>Your cart is empty.</p>
+                    ) : (
+                        <div style={{ margin: '14px 0' }}>
+                            {cart.map(c => (
+                                <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#1f202c', padding: '10px', borderRadius: '6px', marginBottom: '8px' }}>
+                                    <div>
+                                        <strong>{c.title}</strong>
+                                        <p style={{ fontSize: '13px', color: '#9ca3af' }}>${c.price.toFixed(2)} x {c.qty}</p>
+                                    </div>
+                                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                                        <button className="button-secondary" style={{ padding: '6px 12px' }} onClick={() => updateQty(c.id, -1)}>-</button>
+                                        <span style={{ fontWeight: 700, minWidth: '20px', textAlign: 'center' }}>{c.qty}</span>
+                                        <button className="button-secondary" style={{ padding: '6px 12px' }} onClick={() => updateQty(c.id, 1)}>+</button>
+                                    </div>
+                                </div>
+                            ))}
+                            <div style={{ display: 'flex', gap: '8px', margin: '16px 0' }}>
+                                <input placeholder="Coupon (e.g. PROMO15)" value={coupon} onChange={e => setCoupon(e.target.value)} style={{ marginBottom: 0 }} />
+                                <button className="button-secondary" onClick={applyCoupon}>Apply</button>
+                            </div>
+                            <div style={{ borderTop: '1px solid #262837', paddingTop: '14px', marginTop: '14px', display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '15px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <span style={{ color: '#9ca3af' }}>Subtotal:</span>
+                                    <span>${subtotal.toFixed(2)}</span>
+                                </div>
+                                {discount > 0 && (
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', color: '#22c55e' }}>
+                                        <span>Discount ({discount}%):</span>
+                                        <span>-${discountAmount.toFixed(2)}</span>
+                                    </div>
+                                )}
+                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 700, marginTop: '8px' }}>
+                                    <span>Total:</span>
+                                    <span style={{ color: '#e63956' }}>${finalTotal.toFixed(2)}</span>
+                                </div>
+                            </div>
+                            <button style={{ width: '100%', marginTop: '14px' }} onClick={() => alert('Order Placed Successfully!')}>Checkout Now</button>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>

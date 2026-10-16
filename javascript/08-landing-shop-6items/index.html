@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crimson Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+        .product-card { background: #171821; border: 1px solid #262837; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-price { font-size: 20px; font-weight: 700; color: #e63956; margin: 10px 0; }
+        .cart-bar { background: #1f202c; border: 1px solid #262837; border-radius: 8px; padding: 14px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Crimson Store Landing</h1>
+            <p class="subtitle">Full-featured single-page store with 6 products and live cart</p>
+        </header>
+        <div class="cart-bar">
+            <span>Cart Items: <strong id="cartCount">0</strong></span>
+            <span>Total: <strong id="cartTotal" style="color:#e63956;">$0.00</strong></span>
+            <button id="clearCartBtn" class="button-secondary">Reset Cart</button>
+        </div>
+        <div class="product-grid" id="productsContainer"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

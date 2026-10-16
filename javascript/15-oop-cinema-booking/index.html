@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hall-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin: 16px 0; }
+        .seat { background: #1f202c; border: 1px solid #2d2f3d; padding: 12px 6px; border-radius: 6px; text-align: center; cursor: pointer; font-size: 12px; font-weight: 600; }
+        .seat:hover { border-color: #e63956; }
+        .seat.occupied { background: #8f1d35; color: #ffffff; cursor: not-allowed; border-color: #ab2340; }
+        .seat.selected { background: #e63956; color: #ffffff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cinema Hall Reservation System (OOP)</h1>
+            <p class="subtitle">Private seat states, dynamic booking, checkout total and receipt generation</p>
+        </header>
+        <div class="card">
+            <h2>Select Seats in Hall #1</h2>
+            <div class="hall-grid" id="hallGrid"></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px;">
+                <div>Selected: <strong id="selectedCount">0</strong> | Total: <strong id="bookingTotal" style="color:#e63956;">$0</strong></div>
+                <button id="bookSeatsBtn">Confirm Reservation</button>
+            </div>
+            <div id="bookingReceipt" class="output" style="display:none;"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

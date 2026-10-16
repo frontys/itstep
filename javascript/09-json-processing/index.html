@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Working with JSON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JSON Data Processing Engine</h1>
+            <p class="subtitle">User cards, in-stock products, order calculations and book search</p>
+        </header>
+        <div class="grid">
+            <div class="card">
+                <h2>User Profile JSON Parser</h2>
+                <button id="loadUserBtn">Parse User JSON</button>
+                <div id="userCard" class="output">Click button to parse.</div>
+            </div>
+            <div class="card">
+                <h2>In-Stock Catalog Filter</h2>
+                <button id="filterStockBtn">Show Available Only</button>
+                <div id="stockOutput" class="output">Click button to filter.</div>
+            </div>
+            <div class="card">
+                <h2>Library Search (JSON)</h2>
+                <input type="text" id="bookSearchInput" placeholder="Enter book title" value="Clean">
+                <button id="searchBookBtn">Search Books</button>
+                <div id="bookOutput" class="output">Search result will appear here.</div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

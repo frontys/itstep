@@ -1,0 +1,67 @@
+const initialState = {
+    tasks: [
+        { id: 1, text: "Build network streaming pipeline", done: true },
+        { id: 2, text: "Implement Interlocked atomic benchmarks", done: false }
+    ]
+};
+
+function taskReducer(state, action) {
+    switch (action.type) {
+        case 'ADD':
+            return { tasks: [...state.tasks, { id: Date.now(), text: action.payload, done: false }] };
+        case 'TOGGLE':
+            return { tasks: state.tasks.map(t => t.id === action.payload ? { ...t, done: !t.done } : t) };
+        case 'REMOVE':
+            return { tasks: state.tasks.filter(t => t.id !== action.payload) };
+        case 'RESET':
+            return initialState;
+        default:
+            return state;
+    }
+}
+
+function App() {
+    const [state, dispatch] = React.useReducer(taskReducer, initialState);
+    const inputRef = React.useRef(null);
+    const renderCounter = React.useRef(0);
+    renderCounter.current += 1;
+
+    const handleAdd = () => {
+        const val = inputRef.current.value.trim();
+        if (!val) return;
+        dispatch({ type: 'ADD', payload: val });
+        inputRef.current.value = '';
+        inputRef.current.focus();
+    };
+
+    return (
+        <div className="container">
+            <header>
+                <div>
+                    <h1>State Machine with useReducer & useRef</h1>
+                    <p className="subtitle">Predictable dispatch workflows and mutable instance tracking</p>
+                </div>
+                <span className="badge">Renders: {renderCounter.current}</span>
+            </header>
+            <div className="card">
+                <h2>Task Dispatcher</h2>
+                <div style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
+                    <input ref={inputRef} placeholder="Enter assignment title..." style={{ marginBottom: 0 }} />
+                    <button onClick={handleAdd}>Add Task</button>
+                    <button className="button-secondary" onClick={() => dispatch({ type: 'RESET' })}>Reset</button>
+                </div>
+                <div>
+                    {state.tasks.map(t => (
+                        <div key={t.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#1f202c', padding: '12px', borderRadius: '6px', marginBottom: '8px' }}>
+                            <span style={{ textDecoration: t.done ? 'line-through' : 'none', color: t.done ? '#9ca3af' : '#ffffff' }}>{t.text}</span>
+                            <div style={{ display: 'flex', gap: '8px' }}>
+                                <button className="button-secondary" onClick={() => dispatch({ type: 'TOGGLE', payload: t.id })}>{t.done ? 'Undo' : 'Complete'}</button>
+                                <button onClick={() => dispatch({ type: 'REMOVE', payload: t.id })}>Delete</button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}

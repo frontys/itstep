@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Comprehensive Exam</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Comprehensive Exam</h1>
+            <p class="subtitle">Student Gradebook, Mini CRM and Course Portal with LocalStorage</p>
+        </header>
+        <div class="grid">
+            <div class="card">
+                <h2>Electronic Gradebook</h2>
+                <input type="text" id="stName" placeholder="Student Name" value="Victoria">
+                <input type="text" id="stGroup" placeholder="Group" value="CS-42">
+                <input type="text" id="stGrades" placeholder="Grades comma-separated" value="9, 10, 8, 9">
+                <button id="addStudentBtn">Add Student</button>
+                <button id="showLowBtn" class="button-secondary">Average < 6</button>
+                <div id="gradebookOut" class="output">Ready.</div>
+            </div>
+            <div class="card">
+                <h2>Mini CRM Client Inquiries</h2>
+                <input type="text" id="crmClient" placeholder="Client Name" value="Marcus">
+                <input type="text" id="crmPhone" placeholder="Phone" value="+1-555-0199">
+                <select id="crmService">
+                    <option value="Web Development">Web Development</option>
+                    <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+                </select>
+                <button id="addCrmBtn">Create Ticket</button>
+                <div id="crmList" class="output">Tickets will appear here.</div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

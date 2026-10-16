@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM and BOM Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DOM and BOM Navigation Inspector</h1>
+            <p class="subtitle">Document Object Model, Browser Object Model, Window & Navigator properties</p>
+        </header>
+        <div class="grid">
+            <div class="card">
+                <h2>Browser Environment (BOM)</h2>
+                <button id="inspectBomBtn">Inspect BOM Attributes</button>
+                <div id="bomOutput" class="output">Click inspect to view window and navigator state.</div>
+            </div>
+            <div class="card">
+                <h2>Dynamic DOM Manipulation</h2>
+                <input type="text" id="nodeText" placeholder="Enter node text" value="Dynamic Element">
+                <button id="addNodeBtn">Append Node</button>
+                <button id="clearNodesBtn" class="button-secondary">Clear</button>
+                <div id="nodeContainer" style="margin-top:12px; display:flex; flex-wrap:wrap; gap:8px;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

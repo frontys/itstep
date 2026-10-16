@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Schema Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JSON Schema & Data Transformer</h1>
+            <p class="subtitle">Deep validation, serialization, syntax formatter and file export</p>
+        </header>
+        <div class="card">
+            <h2>JSON Validator & Formatter</h2>
+            <textarea id="jsonInput" rows="7">{ "service": "Authentication", "port": 8080, "ssl": true, "routes": ["/login", "/verify"] }</textarea>
+            <button id="validateJsonBtn">Format & Validate JSON</button>
+            <button id="exportJsonBtn" class="button-secondary">Export to File</button>
+            <div id="jsonStatus" class="output">Ready.</div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

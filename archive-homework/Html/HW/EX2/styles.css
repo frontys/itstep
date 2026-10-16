@@ -1,0 +1,26 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.cards {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.card {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 40px;
+}

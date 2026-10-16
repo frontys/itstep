@@ -1,0 +1,27 @@
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+p {
+    font-size: 16px;
+}
+
+code {
+    background-color: #eaeaea;
+    padding: 2px 5px;
+}
+
+pre {
+    background-color: #eaeaea;
+    padding: 10px;
+}

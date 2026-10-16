@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Calculators</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GUI Interactive Calculators</h1>
+            <p class="subtitle">Delivery, room area, tuition fees, discounts and age eligibility</p>
+        </header>
+        <div class="grid">
+            <div class="card">
+                <h2>Delivery Calculator</h2>
+                <input type="number" id="itemPrice" placeholder="Product price" value="150">
+                <input type="number" id="shipPrice" placeholder="Shipping cost" value="15">
+                <button id="delivBtn">Calculate Total</button>
+                <div id="delivOut" class="output">Total: $165</div>
+            </div>
+            <div class="card">
+                <h2>Room Area Calculator</h2>
+                <input type="number" id="roomLength" placeholder="Length (m)" value="5">
+                <input type="number" id="roomWidth" placeholder="Width (m)" value="4">
+                <button id="areaBtn">Calculate Area</button>
+                <div id="areaOut" class="output">Area: 20 m²</div>
+            </div>
+            <div class="card">
+                <h2>Discount & Purchase Total</h2>
+                <input type="number" id="purchaseVal" placeholder="Order amount" value="2500">
+                <button id="discBtn">Apply Discount (>2000 => 15%)</button>
+                <div id="discOut" class="output">Ready.</div>
+            </div>
+            <div class="card">
+                <h2>Age Eligibility Gate</h2>
+                <input type="number" id="userAge" placeholder="Enter age" value="18">
+                <button id="ageBtn">Verify Registration</button>
+                <div id="ageOut" class="output">Ready.</div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

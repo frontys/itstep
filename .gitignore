@@ -1,2 +1,42 @@
-﻿node_modules/
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# .NET & C#
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+env/
+venv/
+
+# Build outputs & artifacts
+dist/
+dist-ssr/
+build/
+*.zip
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
 *.local
+.idea/
+.vscode/
+*.swp
+
+# Secrets & Sessions
+.env
+*.session
+*.session-journal
+*.db

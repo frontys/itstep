@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Scripting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Client-Side Scripting & Dynamic Events</h1>
+            <p class="subtitle">Random colors, mouse tracking, visibility toggles, tabbed catalog</p>
+        </header>
+        <div class="grid">
+            <div class="card">
+                <h2>Random Color Box</h2>
+                <div id="colorBox" style="height:120px; border-radius:8px; background:#8f1d35; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; margin-bottom:12px;">#8F1D35</div>
+                <button id="randColorBtn">Generate Random Color</button>
+            </div>
+            <div class="card">
+                <h2>Mouse Tracking Area</h2>
+                <div id="trackArea" style="height:120px; border-radius:8px; border:2px dashed #2d2f3d; display:flex; align-items:center; justify-content:center; text-align:center; padding:10px; margin-bottom:12px;">Move mouse inside or double click</div>
+                <div id="trackInfo" class="output">Coordinates: X=0, Y=0</div>
+            </div>
+            <div class="card">
+                <h2>Image Visibility Toggle</h2>
+                <div id="mediaBox" style="height:100px; background:#1f202c; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; color:#e63956; font-weight:600;">Media Preview Banner</div>
+                <button id="toggleMediaBtn">Hide Element</button>
+            </div>
+            <div class="card">
+                <h2>Category Switcher</h2>
+                <div style="display:flex; gap:8px; margin-bottom:12px;">
+                    <button class="catBtn" data-cat="laptops">Laptops</button>
+                    <button class="catBtn button-secondary" data-cat="phones">Phones</button>
+                    <button class="catBtn button-secondary" data-cat="tablets">Tablets</button>
+                </div>
+                <div id="catContent" class="output">Selected Category: Laptops
+- ThinkPad X1 Carbon
+- MacBook Pro M3</div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

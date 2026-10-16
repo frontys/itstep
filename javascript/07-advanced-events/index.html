@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Event Handling</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .drag-box { padding: 12px; background: #1f202c; border: 1px solid #2d2f3d; border-radius: 6px; cursor: grab; margin-bottom: 8px; }
+        .drop-zone { min-height: 140px; border: 2px dashed #2d2f3d; border-radius: 8px; padding: 10px; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 100; }
+        .modal { background: #171821; border: 1px solid #e63956; border-radius: 10px; padding: 24px; max-width: 400px; width: 90%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Event Handling</h1>
+            <p class="subtitle">Drag & Drop, Debounced Search, Modal Overlay</p>
+        </header>
+        <div class="grid">
+            <div class="card">
+                <h2>Drag and Drop Zone</h2>
+                <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                    <div id="zoneA" class="drop-zone">
+                        <div id="dragItem1" class="drag-box" draggable="true">Draggable Task #1</div>
+                        <div id="dragItem2" class="drag-box" draggable="true">Draggable Task #2</div>
+                    </div>
+                    <div id="zoneB" class="drop-zone"></div>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Debounced Input & Modal</h2>
+                <input type="text" id="debounceInput" placeholder="Type to search (300ms debounce)...">
+                <div id="searchResult" class="output">Waiting for input...</div>
+                <button id="openModalBtn" style="margin-top:14px;">Open Dialog Modal</button>
+            </div>
+        </div>
+    </div>
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal">
+            <h2>Modal Notification</h2>
+            <p style="color:#d1d5db; margin: 12px 0 20px;">This modal was triggered via custom event bindings.</p>
+            <button id="closeModalBtn">Dismiss</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

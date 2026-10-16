@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON & LocalStorage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JSON & LocalStorage Persistence</h1>
+            <p class="subtitle">Student course registration, homework manager and weekly planner</p>
+        </header>
+        <div class="grid">
+            <div class="card">
+                <h2>Course Registration</h2>
+                <input type="text" id="regName" placeholder="Full Name" value="Arthur Dent">
+                <input type="email" id="regEmail" placeholder="Email" value="arthur@galaxy.org">
+                <input type="number" id="regAge" placeholder="Age" value="30">
+                <select id="regCourse">
+                    <option value="React & Frontend">React & Frontend</option>
+                    <option value="C# & .NET Core">C# & .NET Core</option>
+                </select>
+                <input type="password" id="regPass" placeholder="Password" value="secretPass123">
+                <button id="registerBtn">Register User</button>
+                <div id="regStatus" class="output">Ready.</div>
+            </div>
+            <div class="card">
+                <h2>Homework Task Manager</h2>
+                <input type="text" id="hwSubject" placeholder="Subject" value="Network Programming">
+                <input type="text" id="hwDesc" placeholder="Assignment Description" value="Implement TCP Server">
+                <button id="addHwBtn">Add Assignment</button>
+                <div id="hwList" style="margin-top:14px;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
