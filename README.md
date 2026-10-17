@@ -68,9 +68,9 @@ Interactive single-page applications built with vanilla modern JavaScript and re
 ### 3. React 19 Applications (`react/`)
 Modern React applications developed with TypeScript, React 19, and Vite.
 
-| Directory | Topic & Key Features | Stack / Demo |
+| Directory | Topic & Key Features | Stack |
 | :--- | :--- | :--- |
-| [`GameCatalog`](./react/GameCatalog/) | Full game discovery store with cart mechanics, search, and local persistence | [**Live Demo**](https://frontys.github.io/itstep/) · React 19, Vite |
+| [`GameCatalog`](./react/GameCatalog/) | Full game discovery store with cart mechanics, search, and local persistence | React 19, Vite |
 | `react-10-06-26` | Basket counter, state management, and side effects with `useEffect` | React 19, TS, Vite |
 | `react-10-07-26` | Operator telemetry dashboard and order tracking with `AbortController` | React 19, TS, Vite |
 | `components-and-props` | Structured component hierarchies, typed props validation, and state lifting | React 19, TS, Vite |
