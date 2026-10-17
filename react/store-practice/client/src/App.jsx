@@ -1,9 +1,67 @@
 import React, { useEffect, useState } from 'react';
 
 const API_URL = 'http://localhost:3001/api/products';
+const isGitHubPages = typeof window !== 'undefined' && window.location.hostname.includes('github.io');
 
-// Общая функция отправляет запрос и проверяет ответ сервера
-async function sendRequest(url, options) {
+const INITIAL_MOCK_PRODUCTS = [
+    { id: 5, name: 'Веб камера', category: 'Аксессуары', price: 1800, quantity: 0 },
+    { id: 4, name: 'USB флешка 64 ГБ', category: 'Накопители', price: 350, quantity: 20 },
+    { id: 3, name: 'Монитор 24 дюйма', category: 'Мониторы', price: 6200, quantity: 4 },
+    { id: 1, name: 'Беспроводная мышь', category: 'Аксессуары', price: 700, quantity: 10 }
+];
+
+function getMockProducts() {
+    try {
+        const data = localStorage.getItem('store-practice-products');
+        if (data) return JSON.parse(data);
+    } catch {}
+    try {
+        localStorage.setItem('store-practice-products', JSON.stringify(INITIAL_MOCK_PRODUCTS));
+    } catch {}
+    return INITIAL_MOCK_PRODUCTS;
+}
+
+function saveMockProducts(items) {
+    try {
+        localStorage.setItem('store-practice-products', JSON.stringify(items));
+    } catch {}
+}
+
+// Функция отправляет запрос на сервер или обрабатывает его локально для GitHub Pages
+async function sendRequest(url, options = {}) {
+    if (isGitHubPages) {
+        const method = options.method || 'GET';
+        let items = getMockProducts();
+
+        if (method === 'GET') {
+            return [...items];
+        }
+
+        if (method === 'POST') {
+            const body = JSON.parse(options.body || '{}');
+            const newId = items.length > 0 ? Math.max(...items.map(p => p.id)) + 1 : 1;
+            const newItem = { id: newId, ...body };
+            items = [newItem, ...items];
+            saveMockProducts(items);
+            return { id: newId };
+        }
+
+        if (method === 'PUT') {
+            const id = Number(url.split('/').pop());
+            const body = JSON.parse(options.body || '{}');
+            items = items.map(p => (p.id === id ? { ...p, ...body } : p));
+            saveMockProducts(items);
+            return { message: 'Товар изменен' };
+        }
+
+        if (method === 'DELETE') {
+            const id = Number(url.split('/').pop());
+            items = items.filter(p => p.id !== id);
+            saveMockProducts(items);
+            return { message: 'Товар удален' };
+        }
+    }
+
     const response = await fetch(url, options);
     const data = await response.json().catch(() => ({}));
     if (!response.ok) {
@@ -134,6 +192,13 @@ export default function App() {
                 <h1>Учёт товаров магазина</h1>
                 <p className="description">React + Express + SQLite</p>
             </header>
+
+            {isGitHubPages && (
+                <div className="demo-banner">
+                    🌐 <strong>Онлайн-демо на GitHub Pages</strong> (работает локально в браузере через LocalStorage).
+                    Для запуска с сервером Express + SQLite выполните локально: <code>npm start</code> в папке <code>server</code>.
+                </div>
+            )}
 
             {error && (
                 <div className="error" role="alert">
