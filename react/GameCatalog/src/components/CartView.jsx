@@ -67,12 +67,12 @@ export default function CartView({
           {cart.map(item => (
             <div key={item.id} className="cart-row">
               <img
-                src={item.image}
+                src={item.image && item.image.startsWith('./') ? `${import.meta.env.BASE_URL}${item.image.slice(2)}` : (item.image || `${import.meta.env.BASE_URL}images/fallback.svg`)}
                 alt={item.title}
                 className="cart-thumb"
                 onError={e => {
                   e.target.onerror = null;
-                  e.target.src = './images/fallback.svg';
+                  e.target.src = `${import.meta.env.BASE_URL}images/fallback.svg`;
                 }}
               />
               <div className="cart-item-info">

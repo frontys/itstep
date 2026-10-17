@@ -1,12 +1,12 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/react-itstep/GameCatalog/',
+  base: '/itstep/',
   esbuild: {
     jsx: 'automatic',
   },
   build: {
-    outDir: '../docs/GameCatalog',
+    outDir: '../../docs',
     emptyOutDir: true,
   },
 });

@@ -1,13 +1,21 @@
 export default function GameCard({ game, onAddToCart, inCartCount = 0 }) {
+  const getImgSrc = (src) => {
+    if (!src) return `${import.meta.env.BASE_URL}images/fallback.svg`;
+    if (src.startsWith('./')) {
+      return `${import.meta.env.BASE_URL}${src.slice(2)}`;
+    }
+    return src;
+  };
+
   function handleImgError(e) {
     e.target.onerror = null;
-    e.target.src = './images/fallback.svg';
+    e.target.src = `${import.meta.env.BASE_URL}images/fallback.svg`;
   }
 
   return (
     <div className="card">
       <img
-        src={game.image}
+        src={getImgSrc(game.image)}
         alt={game.title}
         onError={handleImgError}
         className="card-thumb"
