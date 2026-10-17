@@ -193,12 +193,6 @@ export default function App() {
                 <p className="description">React + Express + SQLite</p>
             </header>
 
-            {isGitHubPages && (
-                <div className="demo-banner">
-                    🌐 <strong>Онлайн-демо на GitHub Pages</strong> (работает локально в браузере через LocalStorage).
-                    Для запуска с сервером Express + SQLite выполните локально: <code>npm start</code> в папке <code>server</code>.
-                </div>
-            )}
 
             {error && (
                 <div className="error" role="alert">
