@@ -37,7 +37,6 @@ h1 {
     font-size: 1rem;
 }
 
-/* Сводка склада */
 .summary-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -70,7 +69,6 @@ h1 {
     font-weight: 700;
 }
 
-/* Карточки */
 .card {
     background: white;
     padding: 24px;
@@ -173,7 +171,6 @@ button:disabled {
     font-weight: 500;
 }
 
-/* Фильтры и поиск */
 .table-header {
     display: flex;
     justify-content: space-between;
@@ -216,7 +213,6 @@ button:disabled {
     cursor: pointer;
 }
 
-/* Таблица */
 .table-wrapper {
     overflow-x: auto;
 }
@@ -254,7 +250,6 @@ tbody tr:hover {
     background: #fef2f2;
 }
 
-/* Бейджи */
 .badge {
     display: inline-block;
     padding: 3px 8px;

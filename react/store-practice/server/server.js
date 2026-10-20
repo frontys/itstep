@@ -1,4 +1,3 @@
-// Сервер: учёт товаров магазина (Express + SQLite)
 const express = require('express');
 const cors = require('cors');
 const path = require('node:path');
@@ -8,7 +7,6 @@ const app = express();
 app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 
-// База данных создаётся в папке server
 const database = new DatabaseSync(path.join(__dirname, 'store.db'));
 
 database.exec(`CREATE TABLE IF NOT EXISTS products (
@@ -35,13 +33,11 @@ function validateProduct(product) {
     return '';
 }
 
-// 1. Получение списка всех товаров
 app.get('/api/products', (request, response) => {
     const products = database.prepare('SELECT * FROM products ORDER BY id DESC').all();
     response.json(products);
 });
 
-// 2. Добавление нового товара
 app.post('/api/products', (request, response) => {
     const product = request.body || {};
     const error = validateProduct(product);
@@ -56,7 +52,6 @@ app.post('/api/products', (request, response) => {
     response.status(201).json({ id: Number(result.lastInsertRowid) });
 });
 
-// 3. Редактирование товара
 app.put('/api/products/:id', (request, response) => {
     const id = Number(request.params.id);
     if (!Number.isSafeInteger(id) || id <= 0) {
@@ -80,7 +75,6 @@ app.put('/api/products/:id', (request, response) => {
     response.json({ message: 'Товар изменен' });
 });
 
-// 4. Удаление товара
 app.delete('/api/products/:id', (request, response) => {
     const id = Number(request.params.id);
     if (!Number.isSafeInteger(id) || id <= 0) {
@@ -96,7 +90,6 @@ app.delete('/api/products/:id', (request, response) => {
     response.json({ message: 'Товар удален' });
 });
 
-// Обработка ошибок (включая невалидный JSON)
 app.use((error, request, response, next) => {
     console.error(error);
     response.status(error.type === 'entity.parse.failed' ? 400 : 500)

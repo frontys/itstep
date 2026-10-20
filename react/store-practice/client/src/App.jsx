@@ -27,7 +27,6 @@ function saveMockProducts(items) {
     } catch {}
 }
 
-// Функция отправляет запрос на сервер или обрабатывает его локально для GitHub Pages
 async function sendRequest(url, options = {}) {
     if (isGitHubPages) {
         const method = options.method || 'GET';
@@ -71,7 +70,6 @@ async function sendRequest(url, options = {}) {
 }
 
 export default function App() {
-    // Основные состояния
     const [products, setProducts] = useState([]);
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
@@ -82,7 +80,6 @@ export default function App() {
     const [loading, setLoading] = useState(true);
     const [busy, setBusy] = useState(false);
 
-    // Дополнительные состояния (поиск и фильтрация)
     const [searchTerm, setSearchTerm] = useState('');
     const [onlyOutOfStock, setOnlyOutOfStock] = useState(false);
 
@@ -174,11 +171,9 @@ export default function App() {
         }
     }
 
-    // Итоговые показатели по всему складу
     const totalUnits = products.reduce((acc, p) => acc + p.quantity, 0);
     const totalValuation = products.reduce((acc, p) => acc + (p.price * p.quantity), 0);
 
-    // Фильтрация товаров для отображения в таблице
     const filteredProducts = products.filter(product => {
         const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                               product.category.toLowerCase().includes(searchTerm.toLowerCase());
@@ -193,14 +188,13 @@ export default function App() {
                 <p className="description">React + Express + SQLite</p>
             </header>
 
-
             {error && (
                 <div className="error" role="alert">
                     {error}. Проверьте, запущен ли сервер.
                 </div>
             )}
 
-            {/* Карточки сводки склада */}
+            
             <section className="summary-grid">
                 <div className="summary-card">
                     <span className="summary-label">Всего позиций</span>
@@ -216,7 +210,7 @@ export default function App() {
                 </div>
             </section>
 
-            {/* Форма добавления и редактирования */}
+            
             <section className="card">
                 <h2>{editingId === null ? 'Добавление товара' : 'Редактирование товара'}</h2>
                 <form onSubmit={saveProduct}>
@@ -285,7 +279,7 @@ export default function App() {
                 </form>
             </section>
 
-            {/* Таблица товаров и фильтры */}
+            
             <section className="card">
                 <div className="table-header">
                     <h2>Список товаров: {filteredProducts.length}{filteredProducts.length !== products.length && ` (из ${products.length})`}</h2>
