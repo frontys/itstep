@@ -23,6 +23,15 @@ def connect():
 def init_db():
     with connect() as db:
         db.execute("""
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT NOT NULL,
+                email TEXT NOT NULL UNIQUE,
+                password TEXT NOT NULL,
+                created_at TEXT NOT NULL DEFAULT (datetime('now'))
+            )
+        """)
+        db.execute("""
             CREATE TABLE IF NOT EXISTS movies (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
@@ -32,8 +41,12 @@ def init_db():
                 created_at TEXT NOT NULL DEFAULT (datetime('now'))
             )
         """)
-        count = db.execute("SELECT COUNT(*) FROM movies").fetchone()[0]
-        if count == 0:
+        if db.execute("SELECT COUNT(*) FROM users").fetchone()[0] == 0:
+            db.execute(
+                "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
+                ("admin", "admin@mail.com", "password123"),
+            )
+        if db.execute("SELECT COUNT(*) FROM movies").fetchone()[0] == 0:
             db.executemany(
                 "INSERT INTO movies (title, genre, release_year, watched) VALUES (?, ?, ?, ?)",
                 [
@@ -62,6 +75,17 @@ app.add_middleware(
 )
 
 
+class UserRegister(BaseModel):
+    username: str = Field(min_length=2, max_length=50)
+    email: str = Field(min_length=5, max_length=100)
+    password: str = Field(min_length=6, max_length=128)
+
+
+class UserLogin(BaseModel):
+    email: str = Field(min_length=2, max_length=100)
+    password: str = Field(min_length=1, max_length=128)
+
+
 class MovieCreate(BaseModel):
     title: str = Field(min_length=1, max_length=150)
     genre: str = Field(min_length=1, max_length=50)
@@ -85,6 +109,37 @@ def as_movie(row):
         "watched": bool(row["watched"]),
         "created_at": row["created_at"],
     }
+
+
+@app.post("/api/auth/register", status_code=status.HTTP_201_CREATED)
+def register(payload: UserRegister):
+    username = payload.username.strip()
+    email = payload.email.strip().lower()
+    if not username or not email or not payload.password:
+        raise HTTPException(status_code=422, detail="Заполните все поля")
+    with connect() as db:
+        existing = db.execute("SELECT id FROM users WHERE lower(email) = ?", (email,)).fetchone()
+        if existing:
+            raise HTTPException(status_code=409, detail="Пользователь с таким email уже зарегистрирован")
+        cur = db.execute(
+            "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
+            (username, email, payload.password),
+        )
+        row = db.execute("SELECT id, username, email FROM users WHERE id = ?", (cur.lastrowid,)).fetchone()
+    return dict(row)
+
+
+@app.post("/api/auth/login")
+def login(payload: UserLogin):
+    login_id = payload.email.strip().lower()
+    with connect() as db:
+        row = db.execute(
+            "SELECT id, username, email FROM users WHERE (lower(email) = ? OR lower(username) = ?) AND password = ?",
+            (login_id, login_id, payload.password),
+        ).fetchone()
+        if not row:
+            raise HTTPException(status_code=401, detail="Неверный email или пароль")
+    return dict(row)
 
 
 @app.get("/api/movies")

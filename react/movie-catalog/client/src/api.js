@@ -7,13 +7,18 @@ function getMockData() {
         const raw = localStorage.getItem(MOCK_STORAGE_KEY);
         if (raw) return JSON.parse(raw);
     } catch {}
-    const initial = [
-        { id: 1, title: 'Интерстеллар', genre: 'Фантастика', release_year: 2014, watched: false },
-        { id: 2, title: 'Шрек', genre: 'Мультфильм', release_year: 2001, watched: true },
-        { id: 3, title: 'Начало', genre: 'Фантастика', release_year: 2010, watched: false },
-        { id: 4, title: 'Один дома', genre: 'Комедия', release_year: 1990, watched: true },
-        { id: 5, title: 'Гладиатор', genre: 'Боевик', release_year: 2000, watched: false }
-    ];
+    const initial = {
+        users: [
+            { id: 1, username: 'admin', email: 'admin@mail.com', password: 'password123' }
+        ],
+        movies: [
+            { id: 1, title: 'Интерстеллар', genre: 'Фантастика', release_year: 2014, watched: false },
+            { id: 2, title: 'Шрек', genre: 'Мультфильм', release_year: 2001, watched: true },
+            { id: 3, title: 'Начало', genre: 'Фантастика', release_year: 2010, watched: false },
+            { id: 4, title: 'Один дома', genre: 'Комедия', release_year: 1990, watched: true },
+            { id: 5, title: 'Гладиатор', genre: 'Боевик', release_year: 2000, watched: false }
+        ]
+    };
     try { localStorage.setItem(MOCK_STORAGE_KEY, JSON.stringify(initial)); } catch {}
     return initial;
 }
@@ -24,29 +29,59 @@ function saveMockData(data) {
 
 export async function api(address, method = 'GET', body) {
     if (isGitHubPages) {
-        let movies = getMockData();
+        let store = getMockData();
+        if (address === '/auth/register') {
+            const email = body.email.trim().toLowerCase();
+            if (store.users.some(u => u.email.toLowerCase() === email)) {
+                const err = new Error('Пользователь с таким email уже зарегистрирован');
+                err.status = 409;
+                throw err;
+            }
+            const newUser = {
+                id: store.users.length + 1,
+                username: body.username.trim(),
+                email,
+                password: body.password
+            };
+            store.users.push(newUser);
+            saveMockData(store);
+            return { id: newUser.id, username: newUser.username, email: newUser.email };
+        }
+        if (address === '/auth/login') {
+            const loginId = body.email.trim().toLowerCase();
+            const user = store.users.find(u =>
+                (u.email.toLowerCase() === loginId || u.username.toLowerCase() === loginId) &&
+                u.password === body.password
+            );
+            if (!user) {
+                const err = new Error('Неверный email или пароль');
+                err.status = 401;
+                throw err;
+            }
+            return { id: user.id, username: user.username, email: user.email };
+        }
         if (address === '/movies') {
             if (method === 'GET') {
-                return [...movies];
+                return [...store.movies];
             }
             if (method === 'POST') {
-                const newId = movies.length > 0 ? Math.max(...movies.map(m => m.id)) + 1 : 1;
+                const newId = store.movies.length > 0 ? Math.max(...store.movies.map(m => m.id)) + 1 : 1;
                 const newMovie = { id: newId, ...body };
-                movies = [newMovie, ...movies];
-                saveMockData(movies);
+                store.movies = [newMovie, ...store.movies];
+                saveMockData(store);
                 return newMovie;
             }
         }
         if (address.startsWith('/movies/')) {
             const id = Number(address.split('/').pop());
             if (method === 'PUT') {
-                movies = movies.map(m => m.id === id ? { ...m, ...body } : m);
-                saveMockData(movies);
+                store.movies = store.movies.map(m => m.id === id ? { ...m, ...body } : m);
+                saveMockData(store);
                 return { message: 'Фильм изменен' };
             }
             if (method === 'DELETE') {
-                movies = movies.filter(m => m.id !== id);
-                saveMockData(movies);
+                store.movies = store.movies.filter(m => m.id !== id);
+                saveMockData(store);
                 return { message: 'Фильм удален' };
             }
         }

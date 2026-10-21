@@ -273,6 +273,15 @@ button:disabled {
     font-size: 13px;
 }
 
+.notice-msg {
+    background: #142419;
+    color: #4ade80;
+    border: 1px solid #166534;
+    padding: 8px 10px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
 .error {
     background: #331111;
     color: #ff8a80;

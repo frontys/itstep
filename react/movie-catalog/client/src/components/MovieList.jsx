@@ -3,7 +3,7 @@ import { api } from '../api';
 
 const GENRES = ['Фантастика', 'Комедия', 'Драма', 'Боевик', 'Мультфильм', 'Другое'];
 
-export default function MovieList() {
+export default function MovieList({ user, onLogout }) {
     const [movies, setMovies] = useState([]);
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState(GENRES[0]);
@@ -133,7 +133,13 @@ export default function MovieList() {
             <header className="top-bar">
                 <div>
                     <h1>Личный каталог фильмов</h1>
+                    {user && <span className="user-sub">Вы вошли как: <strong>{user.username}</strong></span>}
                 </div>
+                {onLogout && (
+                    <button className="btn-logout" type="button" disabled={busy} onClick={onLogout}>
+                        Выйти
+                    </button>
+                )}
             </header>
 
             <section className="block">
