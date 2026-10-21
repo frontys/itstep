@@ -3,7 +3,7 @@ import { api } from '../api';
 
 const GENRES = ['Фантастика', 'Комедия', 'Драма', 'Боевик', 'Мультфильм', 'Другое'];
 
-export default function MovieList({ user, onLogout }) {
+export default function MovieList() {
     const [movies, setMovies] = useState([]);
     const [title, setTitle] = useState('');
     const [genre, setGenre] = useState(GENRES[0]);
@@ -18,20 +18,20 @@ export default function MovieList({ user, onLogout }) {
     const [genreFilter, setGenreFilter] = useState('Все');
     const [statusFilter, setStatusFilter] = useState('Все');
 
-    function handleError(err) {
-        if (err.status === 401) onLogout();
-        else setError(err.message);
-    }
-
     async function loadMovies() {
-        const data = await api('/movies');
-        setMovies(data);
+        try {
+            setError('');
+            const data = await api('/movies');
+            setMovies(data);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
-        loadMovies()
-            .catch(handleError)
-            .finally(() => setLoading(false));
+        loadMovies();
     }, []);
 
     function clearForm() {
@@ -88,7 +88,7 @@ export default function MovieList({ user, onLogout }) {
             clearForm();
             await loadMovies();
         } catch (err) {
-            handleError(err);
+            setError(err.message);
         } finally {
             setBusy(false);
         }
@@ -104,20 +104,7 @@ export default function MovieList({ user, onLogout }) {
             if (editingId === movie.id) clearForm();
             await loadMovies();
         } catch (err) {
-            handleError(err);
-        } finally {
-            setBusy(false);
-        }
-    }
-
-    async function logout() {
-        setBusy(true);
-        setError('');
-        try {
-            await api('/auth/logout', 'POST');
-            onLogout();
-        } catch (err) {
-            handleError(err);
+            setError(err.message);
         } finally {
             setBusy(false);
         }
@@ -146,11 +133,8 @@ export default function MovieList({ user, onLogout }) {
             <header className="top-bar">
                 <div>
                     <h1>Личный каталог фильмов</h1>
-                    <span className="user-sub">Вы вошли как: <strong>{user.username}</strong></span>
+                    <span className="user-sub">React + FastAPI + SQLite</span>
                 </div>
-                <button className="btn-logout" disabled={busy} onClick={logout}>
-                    Выйти
-                </button>
             </header>
 
             <section className="block">
