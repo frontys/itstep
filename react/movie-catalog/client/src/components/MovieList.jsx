@@ -133,7 +133,6 @@ export default function MovieList() {
             <header className="top-bar">
                 <div>
                     <h1>Личный каталог фильмов</h1>
-                    <span className="user-sub">React + FastAPI + SQLite</span>
                 </div>
             </header>
 
